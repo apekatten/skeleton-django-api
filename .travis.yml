@@ -6,7 +6,7 @@ python:
 services:
   - docker
 
-before_script: pip install docker-compose
+before_script: pip install docker-compose && mv postgres.env-sample postgres.env
 
 script:
   - docker-compose run api sh -c "python manage.py test && flake8"
