@@ -105,3 +105,6 @@ venv.bak/
 
 # Pycharm
 .idea/
+
+# ENV-files
+*.env

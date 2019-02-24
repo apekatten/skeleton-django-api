@@ -12,12 +12,9 @@ services:
       sh -c "python manage.py wait_for_db &&
             python manage.py migrate &&
             python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - postgres.env
     environment:
-      - DB_HOST=postgres
-      - DB_NAME=django-api
-      - DB_USER=postgres
-      - DB_PASS=HO8P5RDhATfYM5fUimiv6hha
-
       - MAIL_FROM=noreply@sigterm.no
       - MAIL_HOST=smtp.gmail.com
       - MAIL_USER=noreply@sigterm.no
@@ -29,7 +26,5 @@ services:
 
   postgres:
     image: postgres:11-alpine
-    environment:
-      - POSTGRES_DB=django-api
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=HO8P5RDhATfYM5fUimiv6hha
+    env_file:
+      - postgres.env

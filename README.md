@@ -4,8 +4,9 @@ Dockerized basic REST Web API based on Django, complete with user management, us
 
 ### Installation
 ```
-$ git clone <repo>
-$ cd <repo>
+$ git clone https://github.com/apekatten/skeleton-django-api.git
+$ cd skeleton-django-api
+$ mv postgres.env-sample postgres.env
 $ docker-compose build
 $ docker-compose run api sh -c "python manage.py createsuperuser"
 $ docker-compose up
@@ -32,7 +33,6 @@ Please note that a unique username must be given, but is not used elsewhere.
  * Fix email verification, points to wrong view
  * Add "API Docs"
  * Create setup command to replace secrets
- * Move database settings to env-file
 
 #### Commands
  * Run unit tests and linting
