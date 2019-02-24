@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from rest_framework.documentation import include_docs_urls
 from django.contrib.auth import views as dav
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     # Django Auth URLs
     path('auth/pw/reset/<uidb64>/<token>/', dav.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('auth/pw/reset/done/', dav.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('docs/', include_docs_urls(title='API Docs'))
 ]

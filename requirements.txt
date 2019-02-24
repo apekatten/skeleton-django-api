@@ -6,3 +6,6 @@ django-allauth
 flake8
 argon2-cffi
 django[argon2]
+coreapi
+markdown
+pygments
