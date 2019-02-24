@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app
+    command: >
+      sh -c "python manage.py wait_for_db &&
+            python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=django-api
+      - DB_USER=postgres
+      - DB_PASS=HO8P5RDhATfYM5fUimiv6hha
+
+      - MAIL_FROM=noreply@sigterm.no
+      - MAIL_HOST=smtp.gmail.com
+      - MAIL_USER=noreply@sigterm.no
+      - MAIL_PASS=
+      - MAIL_PORT=587
+      - MAIL_TLS=True
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:11-alpine
+    environment:
+      - POSTGRES_DB=django-api
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=HO8P5RDhATfYM5fUimiv6hha
