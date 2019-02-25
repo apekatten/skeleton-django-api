@@ -9,3 +9,4 @@ django[argon2]
 coreapi
 markdown
 pygments
+django-auditlog

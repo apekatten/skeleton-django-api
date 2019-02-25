@@ -34,7 +34,7 @@ You can now visit the API Docs at http://localhost:8000/docs/
  * Audit logging
  * Max login attempts for Django Admin
  * Change email templates
- * Fix email verification, points to wrong view
+ * Fix email verification (https://django-rest-auth.readthedocs.io/en/latest/faq.html)
  * Create setup command to replace secrets
 
 #### Commands
