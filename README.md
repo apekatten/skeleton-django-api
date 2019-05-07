@@ -1,6 +1,7 @@
 # Skeleton Django API
 
-Dockerized basic REST Web API based on Django, complete with user management, using only email and password.
+Dockerized basic REST Web API based on Django, complete with user management,
+using only email and password.
 
 ### Installation
 Run the following commands in terminal to get started
@@ -9,8 +10,12 @@ git clone https://github.com/apekatten/skeleton-django-api.git
 cd skeleton-django-api
 mv postgres.env-sample postgres.env
 docker-compose build
-docker-compose run api sh -c "python manage.py createsuperuser"
 docker-compose up
+```
+This will start everything and run migrations. When this is done you should stop the server
+using `Ctrl+C` and running the following to create a admin user.
+```
+docker-compose run api sh -c "python manage.py createsuperuser"
 ```
 Please note that a unique username must be given while creating superuser,
 but is not used elsewhere. Will remove this at a later time.
