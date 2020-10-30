@@ -20,12 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_18co7h2hvysfmg948#o3-xm=l8x$wtm94a$6^bkrzvxb-666i'
+SECRET_KEY = os.getenv('DJANGO_SECRET', '_18co7h2hvysfmg948#o3-xm=l8x$wtm94a$6^bkrzvxb-666i')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = [*]
+else:
+    ALLOWED_HOSTS = ['example.com']
 
 
 # Application definition
@@ -137,13 +140,9 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -151,15 +150,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
 SITE_ID = 1
-
 AUTH_USER_MODEL = 'core.User'
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Email settings
 # https://docs.djangoproject.com/en/2.1/topics/email/
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = os.getenv('MAIL_HOST', 'smtp.gmail.com')
 EMAIL_HOST_USER = os.getenv('MAIL_USER', 'noreply@sigterm.no')
 EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASS')

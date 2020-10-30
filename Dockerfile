@@ -1,5 +1,5 @@
 FROM python:3-alpine
-MAINTAINER support@sigterm.no
+MAINTAINER Sigterm AS
 
 ENV PYTHONUNBUFFERED 1
 
